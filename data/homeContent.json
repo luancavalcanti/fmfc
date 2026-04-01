@@ -1,0 +1,68 @@
+{
+  "home": {
+    "hero": {
+      "title": "Florida Medical Facility Cleaning",
+      "subtitle": "Providing Professional Cleaning Services for Medical Facilities",
+      "button1": "Request a Quote",
+      "button2": "Our Services"
+    },
+    "facilities": {
+      "preTitle": "Specialized Facility Expertise",
+      "title": "What We Clean",
+      "subtitle": "From large-scale hospitals to specialized private practices, we ensure the cleanliness and appearance of your facility reflects the quality care you provide your patients.",
+      "facilitiesList": [
+        {
+          "category": "Medical Units",
+          "items": [
+            "MRI Facilities",
+            "Hospital Locations",
+            "Plastic Surgeons",
+            "Specialist Practices"
+          ]
+        },
+        {
+          "category": "Surgery & Dialysis",
+          "items": [
+            "Hematology/Oncology Centers",
+            "Outpatient Surgery Centers",
+            "Concierge Practices",
+            "Dialysis Centers"
+          ]
+        },
+        {
+          "category": "Specialized Centers",
+          "items": [
+            "Orthopedic Surgeons",
+            "Diagnostic Facilities",
+            "Eye and Laser Centers",
+            "Dental Offices"
+          ]
+        }
+      ]
+    },
+    "reviews": {
+      "preTitle": "Testimonials",
+      "title": "Trusted by Healthcare Professionals",
+      "testimonials": [
+        {
+          "stars": 5,
+          "text": "FMFC has transformed our facility. Their attention to detail in high-tech environments like our MRI rooms is unmatched. Truly professional and reliable.",
+          "author": "Dr. James Wilson",
+          "position": "Medical Director, MRI Diagnostic Center"
+        },
+        {
+          "stars": 5,
+          "text": "We've tried several cleaning companies, but FMFC is the only one that truly understands medical-grade sanitation. Our inspection scores have never been better.",
+          "author": "Sarah Jenkins",
+          "position": "Administrator, Outpatient Surgery Suites"
+        },
+        {
+          "stars": 5,
+          "text": "The floors look brand new every single day. They are punctual, thorough, and understand the privacy and care our patients expect.",
+          "author": "Dr. Elena Rodriguez",
+          "position": "Owner, Concierge Family Practice"
+        }
+      ]
+    }
+  }
+}

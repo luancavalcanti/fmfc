@@ -1,0 +1,35 @@
+{
+    "about":{
+        "hero": {
+            "title": "About Us",
+            "subtitle": "We are dedicated to providing specialized sanitation services that reflect the high-quality care you offer your patients."
+        },
+        "philosophy":{
+            "preTitle": "Our Philosophy",
+            "title": "A Commonsense Approach to Medical Cleaning",
+            "subtitle": "We promise quality, reliable cleaning service every time. Our methods rely on strict regimented training and cleaning practices. We believe that if it is dirty, it must be cleaned each service—no excuses.",
+            "subtitle2": "Chrome should shine, and hard-to-reach areas are not an excuse for dust.",
+            "valuesList":[
+                {
+                    "icon": "VerifiedUserIcon",
+                    "title": "Strict Training",
+                    "description": "Our team undergoes rigorous training to ensure they are equipped with the knowledge and skills to meet the unique cleaning needs of medical facilities."
+                },
+                {
+                    "icon": "GroupsIcon",
+                    "title": "Expert Teams",
+                    "description": "We have assembled a team of experienced professionals who specialize in medical facility cleaning, ensuring that every job is done to the highest standards."
+                },
+                {
+                    "icon": "HistoryEduIcon",
+                    "title": "Proven Track Record",
+                    "description": "With years of experience in the industry, we have built a reputation for delivering exceptional cleaning services that exceed our clients' expectations."
+                }
+            ]
+        },
+        "mission":{
+            "title":"Our Mission",
+            "subtitle":"To allow you to focus on your business and your patients, not cleaning issues. We take the burden of sanitation off your shoulders with reliable, professional service."
+        }
+    }
+}

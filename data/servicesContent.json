@@ -1,0 +1,35 @@
+{
+  "services": {
+    "hero": {
+      "title": "Our Medical Cleaning Services",
+      "subtitle": "We provide regimented training and strict cleaning practices to ensure your facility meets the highest healthcare standards in Florida."
+    },
+    "servicesList": [
+      {
+        "title": "Terminal Cleaning",
+        "description": "Deep disinfection of surgical suites and patient rooms following discharge to ensure 100% sterilization.",
+        "icon": "BiotechIcon"
+      },
+      {
+        "title": "Medical Floor Care",
+        "description": "Specialized stripping, waxing, and restoration of medical-grade flooring to maintain hygiene and shine.",
+        "icon": "CleanHandsIcon"
+      },
+      {
+        "title": "Virucide & Germicide Cleaning",
+        "description": "All surfaces are treated with hospital-grade disinfectants to eliminate pathogens and viruses.",
+        "icon": "SanitizerIcon"
+      },
+      {
+        "title": "Restroom Sanitization",
+        "description": "Rigorous cleaning of high-touch areas to prevent cross-contamination in public and private clinics.",
+        "icon": "CheckCircleOutlineIcon"
+      }
+    ],
+    "callToAction": {
+        "title": "Ready for a cleaner, safer facility?",
+        "subtitle": "Our methods rely on strict training. Chrome should shine, and hard-to-reach areas are never an excuse for dust.",
+        "button": "Get a free quote"
+    }
+  }
+}

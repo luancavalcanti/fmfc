@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## FMFC - Florida Medical Facility Cleaning
+This is the official institutional website for FMFC, a company specialized in medical-grade sanitation and disinfection for healthcare facilities across Florida, USA. The project focuses on high performance, professional SEO, and conversion-driven design.
 
-## Getting Started
+## Tech Stack
+- Framework: Next.js 15 (App Router)
+- Language: TypeScript
+- UI Library: Material UI (MUI) v6
+- Styling: Emotion (CSS-in-JS) + Modern Flexbox
+- Fonts: Google Fonts (Cabin) via next/font
+- Deployment: Vercel
 
-First, run the development server:
+## Project Structure
+The website was built following a Multi-Page Application (MPA) architecture to optimize SEO for specific medical services:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- app/: Contains all routes and the global layout.
+  - / (Home): High-impact Hero section, specialized facilities list, and social proof (Reviews).
+  - /services: Technical breakdown of medical cleaning protocols and floor care.
+  - /about: Company history, work philosophy, and commitment to hygiene.
+  - /quote: Conversion funnel featuring a specialized service request form.
+- components/: Modular and reusable React components.
+- theme/: MUI ThemeProvider configuration maintaining the brand's visual identity (Medical Blue & Cabin Typography).
+- assets/: Optimized images and logos (WebP format).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
+- Sticky Glass Navbar: Dynamic navigation that changes style (transparency/height) based on user scroll using useScrollTrigger.
+- Responsive Layout: Fully optimized for mobile and desktop using Flexbox-first design (no complex grids).
+- SEO Optimized: Proper use of semantic HTML tags (H1-H6) and NextGen image compression.
+- Dark Overlay Hero: Main section featuring custom image filters to ensure text readability over backgrounds.
+- Dynamic Theme Integration: Seamless connection between Next.js font optimization and MUI’s rendering engine.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development Log
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### March 13, 2026 - Project started
 
-## Learn More
+- Project Goal: Florida Medical Facility Website.
+- Tech Stack: Next.js 15, Tailwind CSS, TypeScript.
+- How to run: npm run dev.
+- Deployment: Vercel (Production branch: main).
 
-To learn more about Next.js, take a look at the following resources:
+### March 15, 2026
+- Implementation of ThemeProvider, Dynamic Navbar, and Hero Section.
+  
+### March 17, 2026
+- Development of institutional pages (Services, About) and navigation flow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### March 18, 2026
+- Finalization of the "Get a Quote" lead generation page and Global Footer.

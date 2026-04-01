@@ -1,0 +1,37 @@
+{
+    "quote":{
+        "hero": {
+            "title": "Request a Quote",
+            "subtitle": "Complete the form below and our team will contact you to discuss your facility is unique cleaning needs."
+        },
+        "orientation":{
+            "title": "Why Choose FMFC?",
+            "reasons":[
+                {
+                    "title": "Customized Service",
+                    "subtitle": "Every office has unique needs. We tailor our protocols to your specific medical specialty."
+                },
+                {
+                    "title": "Fast Response",
+                    "subtitle": "Your time is valuable. We make sure to get back to you as soon as possible."
+                }
+            ],
+            "contact": {
+                "title": "Direct Contact",
+                "phone": "Phone: 561-247-1183",
+                "email": "Email: richmond@floridamfc.com"
+            }
+        },
+        "form":{
+            "name": "Full Name",
+            "business": "Business Name",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "message": "Message",
+            "submit": "Submit Request",
+            "success": "Thank you for your request! We will be in touch shortly.",
+            "error": "An error occurred while submitting your request. Please try again later.",
+            "footer": "By submitting, you agree to our privacy policy. We will never share your information."
+        }
+    }
+}
