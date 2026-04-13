@@ -16,13 +16,14 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import Image from "next/image";
 
-//images
+//images and data
 import logo from "@/assets/logo_white.webp";
 import Link from "next/link";
+import content from "@/data/quoteContent.json"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
+  const { quote } = content
   return (
     <Box
       component="footer"
@@ -54,9 +55,7 @@ export default function Footer() {
               variant="body2"
               sx={{ maxWidth: "300px", mb: 3, opacity: 0.9 }}
             >
-              Florida Medical Facility Cleaning. Providing professional grade
-              sanitation and disinfection for healthcare providers across
-              Florida.
+              Professional Cleaning and Construction Services for Medical Facilities.
             </Typography>
             <Stack direction="row" spacing={1}>
               <IconButton
@@ -78,7 +77,7 @@ export default function Footer() {
           </Box>
 
           {/* COLUNA 2: LINKS RÁPIDOS */}
-          <Box sx={{ flex: 1 }}>
+          {/* <Box sx={{ flex: 1 }}>
             <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
               Quick Links
             </Typography>
@@ -132,7 +131,7 @@ export default function Footer() {
                 About Our Philosophy
               </Typography>
             </Stack>
-          </Box>
+          </Box> */}
 
           {/* COLUNA 3: CONTATO */}
           <Box sx={{ flex: 1.5 }}>
@@ -142,11 +141,11 @@ export default function Footer() {
             <Stack spacing={2}>
               <Stack direction="row" spacing={2} alignItems="center">
                 <PhoneIcon fontSize="small" />
-                <Typography variant="body2">561-247-1183</Typography>
+                <Typography variant="body2">{quote.orientation.contact.phone}</Typography>
               </Stack>
               <Stack direction="row" spacing={2} alignItems="center">
                 <EmailIcon fontSize="small" />
-                <Typography variant="body2">richmond@floridamfc.com</Typography>
+                <Typography variant="body2">{quote.orientation.contact.email}</Typography>
               </Stack>
               <Button
                 component={Link}
