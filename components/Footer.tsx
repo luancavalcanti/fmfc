@@ -18,6 +18,7 @@ import Image from "next/image";
 
 //images
 import logo from "@/assets/logo_white.webp";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -47,7 +48,7 @@ export default function Footer() {
             <Image
               src={logo}
               alt="FMFC Logo"
-              style={{ marginBottom: "20px", width: 150, height: "auto"}}
+              style={{ marginBottom: "20px", width: 150, height: "auto" }}
             />
             <Typography
               variant="body2"
@@ -148,6 +149,8 @@ export default function Footer() {
                 <Typography variant="body2">richmond@floridamfc.com</Typography>
               </Stack>
               <Button
+                component={Link}
+                href="/quote"
                 variant="contained"
                 sx={{
                   bgcolor: "secondary.main",

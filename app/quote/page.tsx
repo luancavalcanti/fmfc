@@ -9,14 +9,16 @@ import {
   Button,
   Stack,
   Paper,
-  Grid as Grid,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-//images
+//images and data
 import hero from "@/assets/quote.webp";
+import content from "@/data/quoteContent.json";
 
 export default function QuotePage() {
+
+  const { quote } = content;
   // Estado simples para o formulário (no futuro você pode usar react-hook-form)
   const [formData, setFormData] = useState({
     name: "",
@@ -47,11 +49,10 @@ export default function QuotePage() {
       >
         <Container maxWidth="lg">
           <Typography variant="h2" sx={{ fontWeight: 800, mb: 2 }}>
-            Request a Quote
+            {quote.hero.title}
           </Typography>
           <Typography variant="h6" sx={{ opacity: 0.9, maxWidth: "600px" }}>
-            Complete the form below and our team will contact you to discuss
-            your facility is unique cleaning needs.
+            {quote.hero.subtitle}
           </Typography>
         </Container>
       </Box>
@@ -71,32 +72,24 @@ export default function QuotePage() {
               color="primary.main"
               sx={{ fontWeight: 700, mb: 3 }}
             >
-              Why Choose FMFC?
+              {quote.orientation.title}
             </Typography>
             <Stack spacing={4}>
-              <Box>
+              {quote.orientation.reasons.map((reason, index) => (
+                <Box  key={index}>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: "text.secondary" }}>
-                  Customized Service
+                  {reason.title}
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                  Every office has unique needs. We tailor our protocols to your
-                  specific medical specialty.
+                  {reason.subtitle}
                 </Typography>
               </Box>
-              <Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: "text.secondary" }}>
-                  Fast Response
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                  Your time is valuable. We make sure to get back to you as soon
-                  as possible.
-                </Typography>
-              </Box>
+              ))}
               <Paper
                 elevation={1}
                 sx={{
                   bgcolor: "white",
-                  p: 2,
+                  p: 4,
                   borderRadius: "16px",
                 }}
               >
@@ -105,13 +98,13 @@ export default function QuotePage() {
                   color="secondary"
                   sx={{ fontWeight: 700 }}
                 >
-                  Direct Contact
+                  {quote.orientation.contact.title}
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                  Phone: 561-247-1183
+                  {quote.orientation.contact.phone}
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                  Email: richmond@floridamfc.com
+                  {quote.orientation.contact.email}
                 </Typography>
               </Paper>
             </Stack>
@@ -129,7 +122,7 @@ export default function QuotePage() {
             <form onSubmit={handleSubmit}>
               <Stack spacing={3}>
                 <TextField
-                  label="Full Name"
+                  label={quote.form.name}
                   fullWidth
                   required
                   variant="outlined"
@@ -138,7 +131,7 @@ export default function QuotePage() {
                   }
                 />
                 <TextField
-                  label="Business Name"
+                  label={quote.form.business}
                   fullWidth
                   required
                   variant="outlined"
@@ -154,7 +147,7 @@ export default function QuotePage() {
                   }}
                 >
                   <TextField
-                    label="Email Address"
+                    label={quote.form.email}
                     fullWidth
                     required
                     type="email"
@@ -163,7 +156,7 @@ export default function QuotePage() {
                     }
                   />
                   <TextField
-                    label="Phone Number"
+                    label={quote.form.phone}
                     fullWidth
                     onChange={(e) =>
                       setFormData({ ...formData, phone: e.target.value })
@@ -171,7 +164,7 @@ export default function QuotePage() {
                   />
                 </Box>
                 <TextField
-                  label="Tell us about your facility (e.g. Size, Type of Clinic)"
+                  label={quote.form.message}
                   fullWidth
                   multiline
                   rows={4}
@@ -189,17 +182,18 @@ export default function QuotePage() {
                     fontSize: "1.1rem",
                     fontWeight: "bold",
                     textTransform: "none",
+                    color: "white",
+                    bgcolor: "secondary.main",
                   }}
                 >
-                  Submit Request
+                  {quote.form.submit}
                 </Button>
                 <Typography
                   variant="caption"
                   color="text.secondary"
                   textAlign="center"
                 >
-                  By submitting, you agree to our privacy policy. We will never
-                  share your information.
+                  {quote.form.footer}
                 </Typography>
               </Stack>
             </form>

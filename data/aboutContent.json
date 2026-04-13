@@ -2,7 +2,7 @@
     "about":{
         "hero": {
             "title": "About Us",
-            "subtitle": "We are dedicated to providing specialized sanitation services that reflect the high-quality care you offer your patients."
+            "subtitle": "We are dedicated to providing specialized cleaning services that reflect the high-quality care you offer your patients."
         },
         "philosophy":{
             "preTitle": "Our Philosophy",
@@ -24,6 +24,11 @@
                     "icon": "HistoryEduIcon",
                     "title": "Proven Track Record",
                     "description": "With years of experience in the industry, we have built a reputation for delivering exceptional cleaning services that exceed our clients' expectations."
+                },
+                {
+                    "icon": "HistoryEduIcon",
+                    "title": "Responsive Cleaning",
+                    "description": "Management that is responsive to client needs to provide consistent quality cleaning."
                 }
             ]
         },

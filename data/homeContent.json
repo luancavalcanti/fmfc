@@ -2,20 +2,19 @@
   "home": {
     "hero": {
       "title": "Florida Medical Facility Cleaning",
-      "subtitle": "Providing Professional Cleaning Services for Medical Facilities",
+      "subtitle": "Professional Cleaning and Construction Services for Medical Facilities",
       "button1": "Request a Quote",
       "button2": "Our Services"
     },
     "facilities": {
       "preTitle": "Specialized Facility Expertise",
       "title": "What We Clean",
-      "subtitle": "From large-scale hospitals to specialized private practices, we ensure the cleanliness and appearance of your facility reflects the quality care you provide your patients.",
+      "subtitle": "From Small hospitals, stand-alone emergency room facilities and outpatient surgery centers to specialized private practices, we ensure the cleanliness and appearance of your facility reflects the quality care you provide your patients.",
       "facilitiesList": [
         {
           "category": "Medical Units",
           "items": [
             "MRI Facilities",
-            "Hospital Locations",
             "Plastic Surgeons",
             "Specialist Practices"
           ]
