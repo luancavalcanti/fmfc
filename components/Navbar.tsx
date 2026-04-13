@@ -9,10 +9,18 @@ import {
   Container,
   Box,
   useScrollTrigger,
+  IconButton,
+  Drawer,
+  List,
+  ListItemButton,
+  ListItemText,
+  Divider,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Importante para saber se estamos em /quote
+import { usePathname } from "next/navigation";
 
 // images
 import logo from "@/assets/logo.webp";
@@ -22,17 +30,21 @@ export default function Navbar() {
   const pathname = usePathname();
   const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 50 });
   
-  // Estado da seção ativa (padrão: home)
+  // Estados
   const [activeSection, setActiveSection] = useState("home");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  // O "Scroll Spy" Matemático (100% Seguro)
+  // Toggle do menu mobile
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  // O "Scroll Spy" Matemático
   useEffect(() => {
-    // Se não estivermos na página principal, desativa o scroll spy
     if (pathname !== "/") return;
 
     const handleScroll = () => {
       const sections = ["home", "services", "about"];
-      // Pegamos a posição do scroll + uma margem (altura do menu + um pouco extra)
       const scrollPosition = window.scrollY + 150; 
 
       for (const section of sections) {
@@ -41,7 +53,6 @@ export default function Navbar() {
           const top = element.offsetTop;
           const height = element.offsetHeight;
           
-          // Se o scroll estiver dentro da área do elemento
           if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(section);
           }
@@ -50,20 +61,22 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Executa ao carregar para pegar a posição inicial
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  // Função para rolar a tela suavemente e compensar a altura do Navbar fixo
+  // Função de clique nos links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    // Se estiver em outra página (ex: /quote), deixa o link funcionar normalmente (ir para /#services)
+    // Fecha o menu mobile se estiver aberto
+    if (mobileOpen) setMobileOpen(false);
+
     if (pathname !== "/") return;
 
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const navHeight = 80; // Altura aproximada do navbar
+      const navHeight = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - navHeight;
 
@@ -71,10 +84,68 @@ export default function Navbar() {
         top: offsetPosition,
         behavior: "smooth",
       });
-      // Atualiza o estado visualmente na hora do clique
       setActiveSection(id);
     }
   };
+
+  // Drawer (Gaveta) do Mobile
+  const drawerContent = (
+    <Box sx={{ width: 250, bgcolor: "background.paper", height: "100%" }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
+        <IconButton onClick={handleDrawerToggle}>
+          <CloseIcon color="primary" />
+        </IconButton>
+      </Box>
+      <Divider />
+      <List sx={{ pt: 2 }}>
+        {["home", "services", "about"].map((item) => {
+          const isActive = pathname === "/" && activeSection === item;
+          
+          return (
+            <ListItemButton
+              key={item}
+              component={Link}
+              href={`/#${item}`}
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item)}
+              sx={{
+                py: 2,
+                color: isActive ? "secondary.main" : "text.secondary",
+                fontWeight: isActive ? "bold" : "normal",
+                borderLeft: isActive ? "4px solid" : "4px solid transparent",
+                borderColor: isActive ? "secondary.main" : "transparent",
+                bgcolor: isActive ? "rgba(0, 85, 150, 0.05)" : "transparent",
+              }}
+            >
+              <ListItemText 
+                primary={item.charAt(0).toUpperCase() + item.slice(1)} 
+                primaryTypographyProps={{ fontWeight: isActive ? 700 : 500 }}
+              />
+            </ListItemButton>
+          );
+        })}
+      </List>
+      <Box sx={{ p: 3, mt: 2 }}>
+        <Button
+          component={Link}
+          href="/quote"
+          variant="contained"
+          fullWidth
+          onClick={() => setMobileOpen(false)}
+          sx={{
+            bgcolor: "primary.main",
+            color: "white",
+            textTransform: "none",
+            fontWeight: "bold",
+            borderRadius: "50px",
+            py: 1.5,
+            "&:hover": { bgcolor: "primary.dark" },
+          }}
+        >
+          Get a Quote
+        </Button>
+      </Box>
+    </Box>
+  );
 
   return (
     <AppBar
@@ -92,29 +163,41 @@ export default function Navbar() {
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar disableGutters>
-          {/* LOGO AREA */}
+        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+          
+          {/* LOGO AREA (Desktop & Mobile) */}
           <Box
             component={Link}
             href="/"
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "home")}
             sx={{
-              display: { xs: "none", md: "flex" },
+              display: "flex",
               alignItems: "center",
-              flexGrow: 1,
               textDecoration: "none",
             }}
           >
             <Image
               src={trigger ? logo : logo2}
               alt="FMFC Logo"
-              style={{ marginRight: "12px", width: trigger ? 100 : 150, height: "auto", transition: "all 0.1s ease-in-out" }}
+              style={{ width: trigger ? 100 : 130, height: "auto", transition: "all 0.1s ease-in-out" }}
             />
           </Box>
 
-          {/* NAV LINKS */}
-          <Stack direction="row" spacing={2} sx={{ display: { xs: "none", md: "flex" } }}>
+          {/* ICONE HAMBÚRGUER (Apenas Mobile) */}
+          <IconButton
+            edge="end"
+            onClick={handleDrawerToggle}
+            sx={{
+              display: { xs: "flex", md: "none" },
+              color: trigger ? "primary.main" : "white",
+            }}
+          >
+            <MenuIcon fontSize="large" />
+          </IconButton>
+
+          {/* NAV LINKS (Apenas Desktop) */}
+          <Stack direction="row" spacing={2} sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
             {["home", "services", "about"].map((item) => {
-              // Se estamos em outra página, nada fica ativo com a barrinha. Se estamos na home, usa o activeSection.
               const isActive = pathname === "/" && activeSection === item;
 
               return (
@@ -122,7 +205,7 @@ export default function Navbar() {
                   key={item}
                   component={Link}
                   href={`/#${item}`}
-                  onClick={(e) => handleNavClick(e, item)}
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item)}
                   color="inherit"
                   sx={{
                     textTransform: "none",
@@ -147,7 +230,7 @@ export default function Navbar() {
               );
             })}
 
-            {/* GET A QUOTE (Página Separada) */}
+            {/* GET A QUOTE (Desktop) */}
             <Button
               component={Link}
               href="/quote"
@@ -167,6 +250,22 @@ export default function Navbar() {
           </Stack>
         </Toolbar>
       </Container>
+
+      {/* DRAWER (Menu Lateral Mobile) */}
+      <Drawer
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Melhora a performance em dispositivos móveis
+        }}
+        sx={{
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 250 },
+        }}
+      >
+        {drawerContent}
+      </Drawer>
     </AppBar>
   );
 }
