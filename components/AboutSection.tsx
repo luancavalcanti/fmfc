@@ -19,6 +19,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 // Dados e Imagens
 import content from "@/data/aboutContent.json";
 import heroImage from "@/assets/about.webp";
+import Banner from "./layout/Banner";
 
 // Mapeamento dinâmico de ícones para os valores
 const iconMap: Record<string, React.ElementType> = {
@@ -35,28 +36,13 @@ export default function AboutSection() {
     <Box id="about" component="section">
       
       {/* --- HEADER SIMPLIFICADO (Banner Visual) --- */}
-      <Box
-        sx={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${heroImage.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          color: "white",
-          py: { xs: 10, md: 15 },
-          textAlign: "center"
-        }}
-      >
-        <Container maxWidth="lg">
-          <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
-            {about.hero.title}
-          </Typography>
-          <Typography variant="h6" sx={{ opacity: 0.9, maxWidth: "800px", mx: "auto" }}>
-            {about.hero.subtitle}
-          </Typography>
-        </Container>
-      </Box>
-
+      <Banner 
+        title = {about.hero.title}
+        subtitle = {about.hero.subtitle}
+        img = {heroImage.src}
+      />
       {/* --- NOSSA FILOSOFIA E VALORES --- */}
-      <Container maxWidth="lg" sx={{ py: { xs: 10, md: 15 } }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 10 } }}>
         <Box
           sx={{
             display: "flex",
@@ -149,7 +135,7 @@ export default function AboutSection() {
       </Container>
 
       {/* --- SEÇÃO FINAL (Our Mission animado) --- */}
-      <Box sx={{ bgcolor: "background.default", mb: 10 }}>
+      {/* <Box sx={{ bgcolor: "background.default", mb: 10 }}>
         <Container maxWidth="md">
           <Paper
             component={motion.div}
@@ -182,7 +168,7 @@ export default function AboutSection() {
             </Typography>
           </Paper>
         </Container>
-      </Box>
+      </Box> */}
     </Box>
   );
 }

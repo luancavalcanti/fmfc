@@ -17,14 +17,16 @@ import BusinessIcon from "@mui/icons-material/Business";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import OpacityIcon from "@mui/icons-material/Opacity";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import { motion } from "framer-motion";
 
 // Dados e Imagens
-// Certifique-se de que os caminhos de importação estão corretos para o seu projeto
 import content from "@/data/homeContent.json";
-import heroImage from "@/assets/hero.webp";
+import servicesContent from "@/data/servicesContent.json";
+// IMPORTANTE: Substitua esta imagem pela sua nova imagem gerada por IA com pessoas
+import heroImage from "@/assets/cece.png"; 
 
-// Mapeamento de Ícones para a seção Facilities
 const facilityIcons: Record<string, React.ElementType> = {
   "Medical Units": LocalHospitalIcon,
   "Surgery & Dialysis": BusinessIcon,
@@ -32,103 +34,205 @@ const facilityIcons: Record<string, React.ElementType> = {
 };
 
 export default function HomeSection() {
-  // Desestruturando os dados do JSON
   const { hero, facilities, reviews } = content.home;
+  const { servicesList } = servicesContent.services;
+  console.log(servicesList.map( service => service.title))
+
+  // Resumo de serviços B2B hardcoded para a Hero (você pode mover para o JSON depois se preferir)
+  const heroServices = [
+    "OSHA & HIPAA Compliant Protocols",
+    "Terminal Cleaning for Surgical Suites",
+    "Specialized MRI & Cleanroom Sanitation"
+  ];
+
+  const handleScrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const element = document.getElementById("services");
+    if (element) {
+      const navHeight = 60; // Mantendo o mesmo padrão do seu Navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
-    // Box Principal com o ID "home" para o Scroll Spy do Navbar
     <Box id="home" component="main">
+      
       {/* --- 1. HERO SECTION --- */}
       <Box
         component="section"
         sx={{
-          pt: { xs: 8, md: 12 },
+          pt: { xs: 15, md: 22 }, // Aumentado para compensar o Navbar fixo
           pb: { xs: 8, md: 12 },
+          bgcolor: "background.default", // Fundo claro e limpo, sem imagem escura
+          minHeight: "100vh",
           display: "flex",
           alignItems: "center",
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroImage.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          color: "white",
-          minHeight: "100vh", // Usando minHeight para garantir boa visualização em telas altas
         }}
       >
         <Container maxWidth="lg">
-          <Box sx={{ flex: 1.2 }}>
-            <Stack spacing={3}>
-              <Typography
-                variant="h2"
-                component="h1"
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: "center",
+              gap: { xs: 6, md: 8 },
+            }}
+          >
+            {/* LADO ESQUERDO: Textos e CTA */}
+            <Box sx={{ flex: 1 }}>
+              <Stack spacing={3}>
+                <Typography
+                  variant="h2"
+                  component="h1"
+                  sx={{
+                    // fontWeight: 800,
+                    fontSize: { xs: "2rem", md: "2.5rem", lg: "3rem" },
+                    lineHeight: 1.1,
+                    color: "primary.main", // Como o fundo agora é claro, o título volta a ser escuro/primário
+                  }}
+                >
+                  {hero.subtitle}
+                </Typography>
+
+                {/* <Typography
+                  variant="h5"
+                  sx={{ fontWeight: 400, color: "text.secondary", maxWidth: "540px" }}
+                >
+                  {hero.subtitle}
+                </Typography> */}
+
+                {/* NOVO: Resumo de Serviços B2B na Hero */}
+                <Stack spacing={2} sx={{ py: 2 }}>
+                  {servicesList.map((service, index) => (
+                    <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <CheckCircleIcon color="secondary" />
+                      <Typography variant="body1" sx={{ fontWeight: 600, color: "text.secondary" }}>
+                        {service.title}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Stack>
+
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  sx={{ pt: 2 }}
+                >
+                  <Button
+                    component={Link}
+                    href="/#quote"
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      px: 4,
+                      py: 1.8,
+                      textTransform: "none",
+                      fontWeight: "bold",
+                      color: "white",
+                      bgcolor: "secondary.main",
+                      "&:hover": { bgcolor: "secondary.dark" },
+                    }}
+                  >
+                    {hero.button1}
+                  </Button>
+
+                  <Button
+                    href="#services"
+                    variant="outlined"
+                    onClick={handleScrollToServices}
+                    size="large"
+                    sx={{
+                      px: 4,
+                      py: 1.8,
+                      textTransform: "none",
+                      fontWeight: "bold",
+                      color: "primary.main",
+                      borderColor: "primary.main",
+                      "&:hover": {
+                        borderColor: "primary.dark",
+                        bgcolor: "rgba(0, 85, 150, 0.05)",
+                      },
+                    }}
+                  >
+                    {hero.button2}
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+
+            {/* LADO DIREITO: Imagem de Pessoa */}
+            <Box 
+              component={motion.div}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              sx={{ flex: 1, width: "100%" }}
+            >
+              <Box
                 sx={{
-                  fontWeight: 800,
-                  fontSize: { xs: "2.5rem", md: "3.5rem" },
-                  lineHeight: 1.1,
+                  position: "relative",
+                  height: { xs: "350px", md: "550px" },
+                  width: "100%",
+                  borderRadius: "24px",
+                  overflow: "hidden",
+                  boxShadow: "0px 30px 60px rgba(0,0,0,0.15)", // Sombra premium para destacar a imagem
                 }}
               >
-                {hero.title}
-              </Typography>
-
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: 400, maxWidth: "540px" }}
-              >
-                {hero.subtitle}
-              </Typography>
-
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
-                sx={{ pt: 2 }}
-              >
-                {/* BOTÃO PARA PÁGINA QUOTE SEPARADA */}
-                <Button
-                  component={Link}
-                  href="/quote"
-                  variant="contained"
-                  size="large"
+                <Box
+                  component="img"
+                  src={heroImage.src}
+                  alt="FMFC Cleaning Professionals"
                   sx={{
-                    px: 4,
-                    py: 1.8,
-                    textTransform: "none",
-                    fontWeight: "bold",
-                    color: "text.primary",
-                    bgcolor: "secondary.main",
-                    "&:hover": { bgcolor: "secondary.dark", color: "white" },
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                />
+                
+                {/* Badge flutuante para reforçar autoridade B2B */}
+                {/* <Paper
+                  elevation={4}
+                  sx={{
+                    position: "absolute",
+                    bottom: 30,
+                    left: -20, // Faz a caixa sair um pouco para fora da imagem no desktop
+                    display: { xs: 'none', sm: 'flex' },
+                    alignItems: "center",
+                    gap: 2,
+                    p: 2,
+                    borderRadius: "16px",
+                    bgcolor: "white",
                   }}
                 >
-                  {hero.button1}
-                </Button>
-
-                {/* BOTÃO SCROLL PARA SERVICES */}
-                <Button
-                  href="#services"
-                  variant="outlined"
-                  size="large"
-                  sx={{
-                    px: 4,
-                    py: 1.8,
-                    textTransform: "none",
-                    fontWeight: "bold",
-                    color: "white",
-                    borderColor: "white",
-                    "&:hover": {
-                      borderColor: "secondary.main",
-                      color: "secondary.main",
-                    },
-                  }}
-                >
-                  {hero.button2}
-                </Button>
-              </Stack>
-            </Stack>
+                  <Box sx={{ bgcolor: "rgba(0, 85, 150, 0.1)", p: 1.5, borderRadius: "12px", display: "flex" }}>
+                    <VerifiedUserIcon color="primary" />
+                  </Box>
+                  <Box>
+                    <Typography variant="subtitle2" sx={{ fontWeight: 800, color: "primary.main" }}>
+                      Certified Experts
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Medical-Grade Standards
+                    </Typography>
+                  </Box>
+                </Paper> */}
+              </Box>
+            </Box>
           </Box>
         </Container>
       </Box>
 
-      {/* --- 2. FACILITIES SECTION --- */}
+      {/* --- 2. WHAT WE CLEAN SECTION --- */}
       <Box
         component="section"
-        sx={{ py: { xs: 10, md: 15 }, bgcolor: "white" }}
+        sx={{ py: { xs: 5, md: 8 }, bgcolor: "white" }}
       >
         <Container maxWidth="lg">
           <Stack spacing={6}>
@@ -187,13 +291,12 @@ export default function HomeSection() {
                       delay: index * 0.15,
                       ease: "easeOut",
                     }}
-                    // Passamos a responsividade para o WRAPPER da animação
                     sx={{
                       width: {
                         xs: "100%",
-                        sm: "300px", // ou o tamanho do seu gap
+                        sm: "300px",
                       },
-                      display: "flex", // Garante que o Paper filho estique
+                      display: "flex",
                       justifyContent: "space-around",
                     }}
                   >
@@ -279,12 +382,12 @@ export default function HomeSection() {
         </Container>
       </Box>
 
-      {/* --- 3. REVIEWS SECTION --- */}
+      {/* --- 3. TESTIMONIALS SECTION --- */}
       <Box
         component="section"
         sx={{
-          py: { xs: 10, md: 15 },
-          bgcolor: "background.default", // Cinza clarinho para dar contraste com a seção branca acima
+          py: { xs: 8, md: 10 },
+          bgcolor: "background.default",
         }}
       >
         <Container maxWidth="lg">

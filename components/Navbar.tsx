@@ -15,16 +15,27 @@ import {
   ListItemButton,
   ListItemText,
   Divider,
+  Typography,
 } from "@mui/material";
+
+// Ícones do Menu
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+
+// Ícones da HeadBar
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // images
-import logo from "@/assets/logo.webp";
-import logo2 from "@/assets/logo2.webp";
+import logo from "@/assets/logo4.png";
+import logo2 from "@/assets/logo4.png";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -68,17 +79,20 @@ export default function Navbar() {
 
   // Função de clique nos links
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    // Fecha o menu mobile se estiver aberto
     if (mobileOpen) setMobileOpen(false);
-
     if (pathname !== "/") return;
 
     e.preventDefault();
+    if (id === "home") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setActiveSection("home");
+    return;
+  }
     const element = document.getElementById(id);
     if (element) {
-      const navHeight = 80;
+      const collapsedNavHeight = 60;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - navHeight;
+      const offsetPosition = elementPosition + window.scrollY - collapsedNavHeight;
 
       window.scrollTo({
         top: offsetPosition,
@@ -90,13 +104,13 @@ export default function Navbar() {
 
   // Drawer (Gaveta) do Mobile
   const drawerContent = (
-    <Box sx={{ width: 250, bgcolor: "background.paper", height: "100%" }}>
+    <Box sx={{ width: 250, bgcolor: "primary.main", height: "100%" }}>
       <Box sx={{ display: "flex", justifyContent: "flex-end", p: 2 }}>
         <IconButton onClick={handleDrawerToggle}>
-          <CloseIcon color="primary" />
+          <CloseIcon sx={{ color: "white" }} />
         </IconButton>
       </Box>
-      <Divider />
+      <Divider sx={{ borderColor: "rgba(255,255,255,0.1)" }} />
       <List sx={{ pt: 2 }}>
         {["home", "services", "about"].map((item) => {
           const isActive = pathname === "/" && activeSection === item;
@@ -109,7 +123,7 @@ export default function Navbar() {
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item)}
               sx={{
                 py: 2,
-                color: isActive ? "secondary.main" : "text.secondary",
+                color: isActive ? "secondary.main" : "white",
                 fontWeight: isActive ? "bold" : "normal",
                 borderLeft: isActive ? "4px solid" : "4px solid transparent",
                 borderColor: isActive ? "secondary.main" : "transparent",
@@ -132,16 +146,16 @@ export default function Navbar() {
           fullWidth
           onClick={() => setMobileOpen(false)}
           sx={{
-            bgcolor: "primary.main",
+            bgcolor: "secondary.main",
             color: "white",
             textTransform: "none",
             fontWeight: "bold",
             borderRadius: "50px",
             py: 1.5,
-            "&:hover": { bgcolor: "primary.dark" },
+            "&:hover": { bgcolor: "secondary.dark" },
           }}
         >
-          Get a Quote
+          Get a Free Quote
         </Button>
       </Box>
     </Box>
@@ -153,17 +167,70 @@ export default function Navbar() {
       elevation={trigger ? 4 : 0}
       color="inherit"
       sx={{
-        backgroundColor: trigger ? "rgba(255, 255, 255, 0.95)" : "transparent",
+        backgroundColor: trigger ? "rgba(255, 255, 255, 0.95)" : "#3d3d3dff",
         backdropFilter: trigger ? "blur(8px)" : "none",
-        transition: "all 0.2s ease-in-out",
-        py: trigger ? 0 : 1.5,
+        transition: "all 0.3s ease-in-out",
         borderBottom: trigger ? "1px solid" : "none",
         borderColor: "divider",
         color: trigger ? "text.primary" : "white",
       }}
     >
+      {/* ======================================= */}
+      {/* HEADBAR (Topo Azul) */}
+      {/* ======================================= */}
+      <Box
+        sx={{
+          bgcolor: "primary.main",
+          color: "white",
+          height: 30,
+          // Esconde a barra em telas muito pequenas (mobile) e também quando o usuário rolar a tela
+          display: trigger ? "none" : { xs: "none", md: "block" },
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Stack direction="row" justifyContent="space-between" alignItems="center">
+            
+            {/* Lado Esquerdo - Contato Rápido */}
+            <Stack direction="row" spacing={2}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                {/* <PhoneIcon fontSize="small" sx={{ color: "secondary.main" }} /> */}
+                <Typography variant="body2" sx={{ fontWeight: 100, letterSpacing: 0.5 }}>
+                  561-247-1183
+                </Typography>
+              </Box>
+              <Divider orientation="vertical" flexItem sx={{ borderColor: "rgba(255, 255, 255, 0.5)" }} />
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                {/* <EmailIcon fontSize="small" sx={{ color: "secondary.main" }} /> */}
+                <Typography variant="body2" sx={{ fontWeight: 100, letterSpacing: 0.5 }}>
+                  clean@floridamfc.com
+                </Typography>
+              </Box>
+            </Stack>
+
+            {/* Lado Direito - Redes Sociais */}
+            <Stack direction="row" spacing={1}>
+              <IconButton size="small" sx={{ color: "white", "&:hover": { color: "secondary.main" } }}>
+                <LinkedInIcon fontSize="small" />
+              </IconButton>
+              <IconButton size="small" sx={{ color: "white", "&:hover": { color: "secondary.main" } }}>
+                <FacebookIcon fontSize="small" />
+              </IconButton>
+              <IconButton size="small" sx={{ color: "white", "&:hover": { color: "secondary.main" } }}>
+                <InstagramIcon fontSize="small" />
+              </IconButton>
+            </Stack>
+
+          </Stack>
+        </Container>
+      </Box>
+
+      {/* ======================================= */}
+      {/* NAVBAR PRINCIPAL */}
+      {/* ======================================= */}
       <Container maxWidth="lg">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+        {/* Ajustei o padding Y (py) para a transição ficar suave quando a HeadBar desaparecer */}
+        <Toolbar disableGutters sx={{ justifyContent: "space-between", height: trigger ? "60px" : "100px", transition: "all 0.3s ease" }}>
           
           {/* LOGO AREA (Desktop & Mobile) */}
           <Box
@@ -179,8 +246,12 @@ export default function Navbar() {
             <Image
               src={trigger ? logo : logo2}
               alt="FMFC Logo"
-              style={{ width: trigger ? 100 : 130, height: "auto", transition: "all 0.1s ease-in-out" }}
+              style={{ width: trigger ? 100 : 150, height: "auto", transition: "all 0.1s ease-in-out" }}
             />
+            <Divider orientation="vertical" flexItem sx={{ display:{ xs: "none", sm: "block" }, mx: 2, borderColor: trigger ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.5)" }} />
+            <Typography variant="body2" sx={{display:{ xs: "none", sm: "block" }, color: trigger ? "text.secondary" : "white", fontWeight: "100", letterSpacing: 1 }}>
+              Florida Medical Facility Cleaning
+            </Typography>
           </Box>
 
           {/* ICONE HAMBÚRGUER (Apenas Mobile) */}
@@ -208,8 +279,9 @@ export default function Navbar() {
                   onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item)}
                   color="inherit"
                   sx={{
+                    fontSize: "1rem",
                     textTransform: "none",
-                    fontWeight: isActive ? 700 : 400,
+                    fontWeight: isActive ? 700 : 500, // Deixei o texto base um pouquinho mais grosso (500)
                     color: trigger ? (isActive ? "secondary.main" : "text.secondary") : "white",
                     position: "relative",
                     "&::after": {
@@ -233,7 +305,8 @@ export default function Navbar() {
             {/* GET A QUOTE (Desktop) */}
             <Button
               component={Link}
-              href="/quote"
+              href="/#quote"
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "quote")}
               variant="contained"
               sx={{
                 bgcolor: "primary.main",
@@ -241,11 +314,13 @@ export default function Navbar() {
                 textTransform: "none",
                 fontWeight: "bold",
                 borderRadius: "50px",
-                px: 3,
+                px: 4, // Aumentei um pouco a largura do botão
+                py: 1, // Dei um pouco mais de altura
+                ml: 2, // Margem esquerda extra para desgrudar do menu
                 "&:hover": { bgcolor: "primary.dark" },
               }}
             >
-              Get a Quote
+              Get a Free Quote
             </Button>
           </Stack>
         </Toolbar>
@@ -257,7 +332,7 @@ export default function Navbar() {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Melhora a performance em dispositivos móveis
+          keepMounted: true, 
         }}
         sx={{
           display: { xs: "block", md: "none" },
