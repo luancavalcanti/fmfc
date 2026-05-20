@@ -85,7 +85,7 @@ export default function HomeSection() {
             }}
           >
             {/* LADO ESQUERDO: Textos e CTA */}
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ flex: 2 }}>
               <Stack spacing={3}>
                 <Typography
                   variant="h2"
@@ -107,7 +107,6 @@ export default function HomeSection() {
                   {hero.subtitle}
                 </Typography> */}
 
-                {/* NOVO: Resumo de Serviços B2B na Hero */}
                 <Stack spacing={2} sx={{ py: 2 }}>
                   {servicesList.map((service, index) => (
                     <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -172,12 +171,12 @@ export default function HomeSection() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              sx={{ flex: 1, width: "100%" }}
+              sx={{ flex: 1, width: "100%", display: "flex", justifyContent: "center" }}
             >
               <Box
                 sx={{
                   position: "relative",
-                  height: { xs: "350px", md: "550px" },
+                  height: { xs: "350px", md: "400px" },
                   width: "100%",
                   borderRadius: "24px",
                   overflow: "hidden",
