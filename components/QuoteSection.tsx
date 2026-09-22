@@ -16,6 +16,8 @@ import SendIcon from "@mui/icons-material/Send";
 import hero from "@/assets/quote.webp";
 import content from "@/data/quoteContent.json";
 import Banner from "./layout/Banner";
+import SectionTitle from "@/components/ui/SectionTitle";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function QuoteSection() {
 
@@ -55,13 +57,11 @@ export default function QuoteSection() {
         >
           {/* LADO ESQUERDO: INFORMAÇÕES */}
           <Box sx={{ flex: 1 }}>
-            <Typography
-              variant="h4"
-              color="primary.main"
-              sx={{ fontWeight: 700, mb: 3 }}
+            <SectionTitle
+              sx={{ fontSize: { xs: "1.8rem", md: "2.2rem" }, mb: 3 }}
             >
               {quote.orientation.title}
-            </Typography>
+            </SectionTitle>
             <Stack spacing={4}>
               {quote.orientation.reasons.map((reason, index) => (
                 <Box key={index}>
@@ -160,23 +160,13 @@ export default function QuoteSection() {
                     setFormData({ ...formData, message: e.target.value })
                   }
                 />
-                <Button
+                <PrimaryButton
                   type="submit"
-                  variant="contained"
-                  size="large"
                   endIcon={<SendIcon />}
-                  sx={{
-                    py: 2,
-                    fontSize: "1.1rem",
-                    fontWeight: "bold",
-                    textTransform: "none",
-                    color: "white",
-                    bgcolor: "secondary.main",
-                    borderRadius: 16,
-                  }}
+                  sx={{ py: 2, fontSize: "1.1rem" }}
                 >
                   {quote.form.submit}
-                </Button>
+                </PrimaryButton>
                 <Typography
                   variant="caption"
                   color="text.secondary"

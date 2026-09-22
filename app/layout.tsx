@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import { Cabin } from 'next/font/google';
 import Footer from "@/components/Footer";
 import CopyrightSection from "@/components/CopyrightSection";
+import BackToTop from "@/components/BackToTop";
 import type { Metadata } from "next";
 
 // Configurando a fonte
@@ -37,6 +38,7 @@ export default function RootLayout({
             {children}
             <Footer />
             <CopyrightSection />
+            <BackToTop />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

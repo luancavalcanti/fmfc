@@ -13,6 +13,10 @@ const facilityIcons: Record<string, React.ElementType> = {
   "Specialized Centers": OpacityIcon,
 };
 
+import PreTitle from "@/components/ui/PreTitle";
+import SectionTitle from "@/components/ui/SectionTitle";
+import Subtitle from "@/components/ui/Subtitle";
+
 export default function WhatWeCleanSection() {
   const { facilities } = content;
 
@@ -30,33 +34,15 @@ export default function WhatWeCleanSection() {
               spacing={1}
               sx={{ textAlign: "center", alignItems: "center" }}
             >
-              <Typography
-                variant="overline"
-                sx={{
-                  color: "secondary.main",
-                  fontWeight: "bold",
-                  letterSpacing: 2,
-                }}
-              >
+              <PreTitle>
                 {facilities.preTitle}
-              </Typography>
-              <Typography
-                variant="h3"
-                sx={{
-                  fontWeight: 800,
-                  color: "primary.main",
-                  fontSize: { xs: "2.3rem", md: "3.3rem" },
-                }}
-              >
+              </PreTitle>
+              <SectionTitle>
                 {facilities.title}
-              </Typography>
-              <Typography
-                variant="h6"
-                color="text.secondary"
-                sx={{ fontWeight: 400, maxWidth: "650px", pt: 1 }}
-              >
+              </SectionTitle>
+              <Subtitle sx={{ maxWidth: "650px", pt: 1, mx: 0 }}>
                 {facilities.subtitle}
-              </Typography>
+              </Subtitle>
             </Stack>
 
             <Box

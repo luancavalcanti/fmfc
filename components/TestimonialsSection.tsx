@@ -4,6 +4,8 @@ import { Box, Typography, Container, Stack, Paper, Rating } from "@mui/material"
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import { motion } from "framer-motion";
 import content from "@/data/testimonialsContent.json";
+import PreTitle from "@/components/ui/PreTitle";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 export default function TestimonialsSection() {
   const { reviews } = content;
@@ -21,22 +23,12 @@ export default function TestimonialsSection() {
         <Container maxWidth="lg">
           <Stack spacing={6}>
             <Stack spacing={1} sx={{ textAlign: "center" }}>
-              <Typography
-                variant="overline"
-                sx={{
-                  color: "primary.main",
-                  fontWeight: "bold",
-                  letterSpacing: 2,
-                }}
-              >
+              <PreTitle>
                 {reviews.preTitle}
-              </Typography>
-              <Typography
-                variant="h3"
-                sx={{ fontWeight: 800, color: "primary.main" }}
-              >
+              </PreTitle>
+              <SectionTitle>
                 {reviews.title}
-              </Typography>
+              </SectionTitle>
             </Stack>
 
             <Box

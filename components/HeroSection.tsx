@@ -8,7 +8,10 @@ import content from "@/data/heroContent.json";
 import servicesContent from "@/data/servicesContent.json";
 
 import heroBgHorizontal from "@/assets/hero_bg_horizontal3.jpg";
-
+import Title from "@/components/ui/Title";
+import Subtitle from "@/components/ui/Subtitle";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import SecondaryButton from "@/components/ui/SecondaryButton";
 export default function HeroSection() {
   const { hero } = content;
   const { servicesList } = servicesContent.services;
@@ -120,30 +123,12 @@ export default function HeroSection() {
             sx={{ flex: 1.2, maxWidth: "600px" }}
           >
             <Stack spacing={3}>
-              <Typography
-                variant="h2"
-                component="h1"
-                sx={{
-                  fontWeight: 900,
-                  color: "primary.dark",
-                  fontSize: { xs: "2rem", md: "2.5rem", lg: "3.5rem" },
-                  lineHeight: 1.1,
-                  letterSpacing: "-1px",
-                }}
-              >
+              <Title customColor="primary.dark">
                 {hero.subtitle}
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  color: "text.secondary",
-                  fontWeight: 400,
-                  lineHeight: 1.6,
-                  maxWidth: "90%",
-                }}
-              >
+              </Title>
+              <Subtitle>
                 {hero.subtitle2}
-              </Typography>
+              </Subtitle>
 
               <Stack spacing={1.5} sx={{ py: 2 }}>
                 {servicesList.map((service, index) => (
@@ -161,48 +146,13 @@ export default function HeroSection() {
                 spacing={2}
                 sx={{ pt: 2 }}
               >
-                <Button
-                  component={Link}
-                  href="/#quote"
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    px: 5,
-                    py: 1.8,
-                    textTransform: "none",
-                    fontWeight: "bold",
-                    color: "white",
-                    bgcolor: "secondary.main",
-                    borderRadius: "50px",
-                    boxShadow: "0px 10px 20px rgba(246, 175, 133, 0.3)",
-                    "&:hover": { bgcolor: "secondary.dark", transform: "translateY(-2px)" },
-                    transition: "all 0.3s ease",
-                  }}
-                >
+                <PrimaryButton component={Link} href="/#quote">
                   {hero.button1}
-                </Button>
+                </PrimaryButton>
 
-                <Button
-                  href="#services"
-                  variant="outlined"
-                  onClick={handleScrollToServices}
-                  size="large"
-                  sx={{
-                    px: 4,
-                    py: 1.8,
-                    textTransform: "none",
-                    fontWeight: "bold",
-                    color: "primary.main",
-                    borderColor: "primary.main",
-                    borderRadius: "50px",
-                    "&:hover": {
-                      borderColor: "primary.dark",
-                      bgcolor: "rgba(51, 190, 202, 0.05)",
-                    },
-                  }}
-                >
+                <SecondaryButton href="#services" onClick={handleScrollToServices}>
                   {hero.button2}
-                </Button>
+                </SecondaryButton>
               </Stack>
             </Stack>
           </Box>

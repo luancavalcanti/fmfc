@@ -5,6 +5,8 @@ import { Box, Container, Typography, Stack, Paper } from "@mui/material";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import content from "@/data/processContent.json";
+import PreTitle from "@/components/ui/PreTitle";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 import step1Img from "@/assets/process/step_1.jpg";
 import step2Img from "@/assets/process/step_2.jpg";
@@ -30,22 +32,12 @@ export default function ProcessSection() {
       <Container maxWidth="lg">
         <Stack spacing={6}>
           <Stack spacing={1} sx={{ textAlign: "center" }}>
-            <Typography
-              variant="overline"
-              sx={{
-                color: "secondary.main",
-                fontWeight: "bold",
-                letterSpacing: 2,
-              }}
-            >
+            <PreTitle>
               {process.preTitle}
-            </Typography>
-            <Typography
-              variant="h3"
-              sx={{ fontWeight: 800, color: "primary.main" }}
-            >
+            </PreTitle>
+            <SectionTitle>
               {process.title}
-            </Typography>
+            </SectionTitle>
           </Stack>
 
           <Box sx={{ position: "relative", mt: 4 }}>

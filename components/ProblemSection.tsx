@@ -4,6 +4,9 @@ import { Box, Typography, Container, Stack, Paper } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import content from "@/data/problemContent.json";
+import PreTitle from "@/components/ui/PreTitle";
+import SectionTitle from "@/components/ui/SectionTitle";
+import Subtitle from "@/components/ui/Subtitle";
 
 export default function ProblemSection() {
   const { problem } = content;
@@ -17,18 +20,15 @@ export default function ProblemSection() {
       >
         <Container maxWidth="lg">
           <Stack spacing={4} sx={{ textAlign: "flex-start", mb: 6 }}>
-            <Typography
-              variant="overline"
-              sx={{ color: "secondary.main", fontWeight: "bold", letterSpacing: 2 }}
-            >
+            <PreTitle>
               {problem.preTitle}
-            </Typography>
-            <Typography variant="h3" sx={{ fontWeight: 800, color: "primary.main", fontSize: { xs: "2rem", md: "2.8rem" } }}>
+            </PreTitle>
+            <SectionTitle>
               {problem.title}
-            </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ fontWeight: 400, maxWidth: "800px", mx: "auto" }}>
+            </SectionTitle>
+            <Subtitle sx={{ maxWidth: "800px", mx: 0 }}>
               {problem.subtitle}
-            </Typography>
+            </Subtitle>
           </Stack>
 
           <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: 4 }}>

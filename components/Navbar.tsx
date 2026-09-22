@@ -55,7 +55,7 @@ export default function Navbar() {
     if (pathname !== "/") return;
 
     const handleScroll = () => {
-      const sections = ["about", "process", "facilities", "services", "testimonials", "quote"];
+      const sections = ["about", "facilities", "services", "testimonials", "quote"];
       const scrollPosition = window.scrollY + 150; // Compensação da altura da Navbar
 
       let foundSection = "";
@@ -124,7 +124,6 @@ export default function Navbar() {
       <List sx={{ pt: 2 }}>
         {[
           { id: "about", label: "About Us" },
-          { id: "process", label: "Our Process" },
           { id: "facilities", label: "Facilities" },
           { id: "services", label: "Services" },
           { id: "testimonials", label: "Testimonials" },
@@ -264,8 +263,8 @@ export default function Navbar() {
               alt="FMFC Logo"
               style={{ width: trigger ? 100 : 120, height: "auto", transition: "all 0.1s ease-in-out" }}
             />
-            <Divider orientation="vertical" flexItem sx={{ display: { xs: "none", sm: "block" }, mx: 2, borderColor: trigger ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.5)" }} />
-            <Typography variant="body2" sx={{ display: { xs: "none", sm: "block" }, color: trigger ? "text.secondary" : "white", fontWeight: "100", letterSpacing: 1 }}>
+            <Divider orientation="vertical" flexItem sx={{ display: { xs: "none", lg: "block" }, mx: 2, borderColor: trigger ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.5)" }} />
+            <Typography variant="body2" sx={{ display: { xs: "none", lg: "block" }, color: trigger ? "text.secondary" : "white", fontWeight: "100", letterSpacing: 1 }}>
               Florida Medical Facility Cleaning
             </Typography>
           </Box>
@@ -283,10 +282,9 @@ export default function Navbar() {
           </IconButton>
 
           {/* NAV LINKS (Apenas Desktop) */}
-          <Stack direction="row" spacing={2} sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
+          <Stack direction="row" spacing={{ md: 1, lg: 2 }} sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
             {[
               { id: "about", label: "About Us" },
-              { id: "process", label: "Our Process" },
               { id: "facilities", label: "Facilities" },
               { id: "services", label: "Services" },
               { id: "testimonials", label: "Testimonials" },
@@ -301,9 +299,10 @@ export default function Navbar() {
                   onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item.id)}
                   color="inherit"
                   sx={{
-                    fontSize: "1rem",
+                    fontSize: "0.9rem",
                     textTransform: "none",
-                    fontWeight: isActive ? 700 : 500, // Deixei o texto base um pouquinho mais grosso (500)
+                    whiteSpace: "nowrap",
+                    fontWeight: isActive ? 700 : 400, // Deixei o texto base um pouquinho mais grosso (500)
                     color: trigger ? (isActive ? "secondary.main" : "text.secondary") : "white",
                     position: "relative",
                     "&::after": {
@@ -335,10 +334,11 @@ export default function Navbar() {
                 color: "white",
                 textTransform: "none",
                 fontWeight: "bold",
+                whiteSpace: "nowrap",
                 borderRadius: "50px",
-                px: 4, // Aumentei um pouco a largura do botão
+                px: { md: 2, lg: 4 }, // Aumentei um pouco a largura do botão
                 py: 1, // Dei um pouco mais de altura
-                ml: 2, // Margem esquerda extra para desgrudar do menu
+                ml: { md: 1, lg: 2 }, // Margem esquerda extra para desgrudar do menu
                 transition: "background-color 0.3s ease",
                 "&:hover": { bgcolor: activeSection === "quote" ? "secondary.dark" : "primary.dark" },
               }}

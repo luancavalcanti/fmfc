@@ -48,6 +48,8 @@ const serviceImagesMap: Record<string, StaticImageData[]> = {
 };
 
 import ParallaxWrapper from "@/components/ParallaxWrapper";
+import SectionTitle from "@/components/ui/SectionTitle";
+import Subtitle from "@/components/ui/Subtitle";
 
 export default function ServicesSection() {
   const { services } = content;
@@ -72,12 +74,12 @@ export default function ServicesSection() {
           }}
         >
           <Container maxWidth="lg">
-            <Typography variant="h3" sx={{ fontWeight: 800, mb: 2 }}>
+            <SectionTitle customColor="white" sx={{ mb: 2 }}>
               {services.hero.title}
-            </Typography>
-            <Typography variant="h6" sx={{ opacity: 0.9, maxWidth: "800px", mx: "auto" }}>
+            </SectionTitle>
+            <Subtitle sx={{ color: "white", opacity: 0.9, maxWidth: "800px", mx: "auto" }}>
               {services.hero.subtitle}
-            </Typography>
+            </Subtitle>
           </Container>
         </Box>
       </ParallaxWrapper>

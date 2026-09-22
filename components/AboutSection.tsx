@@ -21,6 +21,9 @@ import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import content from "@/data/aboutContent.json";
 import heroImage from "@/assets/about.webp";
 import Banner from "./layout/Banner";
+import PreTitle from "@/components/ui/PreTitle";
+import SectionTitle from "@/components/ui/SectionTitle";
+import Subtitle from "@/components/ui/Subtitle";
 
 // Mapeamento dinâmico de ícones para os valores
 const iconMap: Record<string, React.ElementType> = {
@@ -62,33 +65,18 @@ export default function AboutSection() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             sx={{ flex: 1 }}
           >
-            <Typography
-              variant="overline"
-              color="secondary.main"
-              sx={{ fontWeight: "bold", letterSpacing: 2 }}
-            >
+            <PreTitle>
               {about.philosophy.preTitle}
-            </Typography>
-            <Typography
-              variant="h3"
-              color="primary.main"
-              sx={{ fontWeight: 800, mb: 3 }}
-            >
+            </PreTitle>
+            <SectionTitle sx={{ mb: 3 }}>
               {about.philosophy.title}
-            </Typography>
-            <Typography
-              variant="body1"
-              color="text.secondary"
-              sx={{ fontSize: "1.1rem", lineHeight: 1.8, mb: 2 }}
-            >
+            </SectionTitle>
+            <Subtitle sx={{ mb: 2, fontSize: "1.1rem", lineHeight: 1.8 }}>
               {about.philosophy.subtitle}
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{ fontSize: "1.1rem", lineHeight: 1.8, fontWeight: 600, color: "primary.main" }}
-            >
+            </Subtitle>
+            <Subtitle sx={{ fontSize: "1.1rem", lineHeight: 1.8, fontWeight: 600, color: "primary.main" }}>
               {about.philosophy.subtitle2}
-            </Typography>
+            </Subtitle>
           </Box>
 
           {/* Lado Direito - Valores (Renderizado dinamicamente do JSON) */}

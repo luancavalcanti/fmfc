@@ -3,6 +3,9 @@ import React from "react";
 import Link from "next/link";
 import { Box, Container, Typography, Paper, Button } from "@mui/material";
 import content from "@/data/servicesContent.json";
+import SectionTitle from "@/components/ui/SectionTitle";
+import Subtitle from "@/components/ui/Subtitle";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function CallToActionSection() {
   const { callToAction } = content.services;
@@ -21,31 +24,21 @@ export default function CallToActionSection() {
             bgcolor: "#f8fafd", // Suave tom de azul/cinza para contrastar com o fundo branco da seção
           }}
         >
-          <Typography variant="h4" sx={{ fontWeight: 800, mb: 3, color: "primary.main" }}>
+          <SectionTitle sx={{ mb: 3, fontSize: { xs: "2rem", md: "2.8rem" } }}>
             {callToAction.title}
-          </Typography>
-          <Typography variant="h6" color="text.secondary" sx={{ mb: 4, fontWeight: 400 }}>
+          </SectionTitle>
+          <Subtitle sx={{ mb: 4, mx: "auto" }}>
             {callToAction.subtitle}
-          </Typography>
+          </Subtitle>
 
           {/* BOTÃO PARA PÁGINA QUOTE */}
-          <Button
+          <PrimaryButton
             component={Link}
             href="/#quote"
-            variant="contained"
-            size="large"
-            sx={{
-              bgcolor: "secondary.main",
-              color: "text.primary", // Texto escuro contrastando com o botão laranja
-              fontWeight: "bold",
-              px: 6,
-              py: 2,
-              borderRadius: "50px",
-              "&:hover": { bgcolor: "secondary.dark", color: "white" },
-            }}
+            sx={{ px: 6, py: 2 }}
           >
             {callToAction.button}
-          </Button>
+          </PrimaryButton>
         </Paper>
       </Container>
     </Box>
