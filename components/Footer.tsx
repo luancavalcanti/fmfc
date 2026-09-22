@@ -57,123 +57,45 @@ export default function Footer() {
             >
               Professional Cleaning and Construction Services for Medical Facilities.
             </Typography>
-            <Stack direction="row" spacing={1}>
-              <IconButton
-                sx={{ color: "white", bgcolor: "rgba(255,255,255,0.1)" }}
-              >
-                <FacebookIcon />
-              </IconButton>
-              <IconButton
-                sx={{ color: "white", bgcolor: "rgba(255,255,255,0.1)" }}
-              >
-                <InstagramIcon />
-              </IconButton>
-              <IconButton
-                sx={{ color: "white", bgcolor: "rgba(255,255,255,0.1)" }}
-              >
-                <LinkedInIcon />
-              </IconButton>
-            </Stack>
           </Box>
 
-          {/* COLUNA 2: LINKS RÁPIDOS */}
-          {/* <Box sx={{ flex: 1 }}>
-            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
-              Quick Links
-            </Typography>
-            <Stack spacing={1}>
-              <Typography
-                variant="body2"
-                component="a"
-                href="#"
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                Medical Cleaning Services
-              </Typography>
-              <Typography
-                variant="body2"
-                component="a"
-                href="#"
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                Compliance & Standards
-              </Typography>
-              <Typography
-                variant="body2"
-                component="a"
-                href="#"
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                Before & After Photos
-              </Typography>
-              <Typography
-                variant="body2"
-                component="a"
-                href="#"
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                About Our Philosophy
-              </Typography>
-            </Stack>
-          </Box> */}
+          <Box sx={{ flex: 1.5 }}>
+            <Button
+              component={Link}
+              href="/#quote"
+              variant="contained"
+              sx={{
+                bgcolor: "white",
+                color: "primary.main",
+                fontWeight: "bold",
+                boxShadow: 0,
+                borderRadius: 16,
+                width: "250px",
+                mt: 2,
+                "&:hover": { bgcolor: "primary.light", color: "white", boxShadow: 0 },
+              }}
+            >
+              Request a Free Quote
+            </Button>
+          </Box>
 
           {/* COLUNA 3: CONTATO */}
           <Box sx={{ flex: 1.5 }}>
-            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>
-              Contact Us
+            <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
+              CONTACT US
             </Typography>
             <Stack spacing={2}>
               <Stack direction="row" spacing={2} alignItems="center">
                 <PhoneIcon fontSize="small" />
-                <Typography variant="body2">{quote.orientation.contact.phone}</Typography>
+                <Typography variant="body1">{quote.orientation.contact.phone}</Typography>
               </Stack>
               <Stack direction="row" spacing={2} alignItems="center">
                 <EmailIcon fontSize="small" />
-                <Typography variant="body2">{quote.orientation.contact.email}</Typography>
+                <Typography variant="body1">{quote.orientation.contact.email}</Typography>
               </Stack>
-              <Button
-                component={Link}
-                href="/quote"
-                variant="contained"
-                sx={{
-                  bgcolor: "secondary.main",
-                  color: "text.primary",
-                  fontWeight: "bold",
-                  width: "250px",
-                  mt: 2,
-                  "&:hover": { bgcolor: "rgba(255,255,255,0.9)" },
-                }}
-              >
-                Request a Free Quote
-              </Button>
             </Stack>
           </Box>
-        </Box>
 
-        <Divider sx={{ borderColor: "rgba(255,255,255,0.2)", mb: 4 }} />
-
-        {/* COPYRIGHT */}
-        <Box sx={{ textAlign: "center", opacity: 0.8 }}>
-          <Typography variant="caption">
-            © {currentYear} Florida Medical Facility Cleaning. All Rights
-            Reserved. Licensed & Insured.
-          </Typography>
         </Box>
       </Container>
     </Box>

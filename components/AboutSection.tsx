@@ -15,6 +15,7 @@ import {
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import GroupsIcon from "@mui/icons-material/Groups";
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 
 // Dados e Imagens
 import content from "@/data/aboutContent.json";
@@ -26,6 +27,7 @@ const iconMap: Record<string, React.ElementType> = {
   "VerifiedUserIcon": VerifiedUserIcon,
   "GroupsIcon": GroupsIcon,
   "HistoryEduIcon": HistoryEduIcon,
+  "VolunteerActivismIcon": VolunteerActivismIcon,
 };
 
 export default function AboutSection() {
@@ -34,12 +36,12 @@ export default function AboutSection() {
   return (
     // ID "about" FUNDAMENTAL para o Scroll Spy do Navbar funcionar
     <Box id="about" component="section">
-      
+
       {/* --- HEADER SIMPLIFICADO (Banner Visual) --- */}
-      <Banner 
-        title = {about.hero.title}
-        subtitle = {about.hero.subtitle}
-        img = {heroImage.src}
+      <Banner
+        title={about.hero.title}
+        subtitle={about.hero.subtitle}
+        img={heroImage.src}
       />
       {/* --- NOSSA FILOSOFIA E VALORES --- */}
       <Container maxWidth="lg" sx={{ py: { xs: 8, md: 10 } }}>
@@ -52,7 +54,7 @@ export default function AboutSection() {
           }}
         >
           {/* Lado Esquerdo - Textos da Filosofia (Animado inteiro) */}
-          <Box 
+          <Box
             component={motion.div}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

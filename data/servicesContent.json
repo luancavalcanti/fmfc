@@ -1,35 +1,35 @@
 {
   "services": {
     "hero": {
-      "title": "Our Medical Cleaning Services",
-      "subtitle": "We provide regimented training and strict cleaning practices to ensure your facility meets the highest healthcare standards in Florida."
+      "title": "Janitorial & Advanced Facility Care",
+      "subtitle": "Protecting the professional appearance of your facility from routine cleaning to specialized floor restoration and project support — tailored to your facility's ongoing needs"
     },
     "servicesList": [
       {
-        "title": "Terminal Cleaning",
-        "description": "Deep disinfection of surgical suites and patient rooms following discharge to ensure the highest level of cleanliness.",
-        "icon": "BiotechIcon"
+        "title": "Professional Medical Facility Cleaning",
+        "description": "High-touch areas and surfaces are rigorously sanitized with hospital-grade disinfectants to eliminate pathogens and prevent cross-contamination.",
+        "icon": "CheckCircleOutlineIcon"
       },
       {
-        "title": "Medical Floor Care",
-        "description": "Specialized stripping, waxing, and restoration of medical-grade flooring to maintain hygiene and shine.",
-        "icon": "CleaningServicesIcon"
-      },
-      {
-        "title": "Virucide & Germicide Cleaning",
-        "description": "All surfaces are treated with hospital-grade disinfectants to eliminate pathogens and viruses.",
+        "title": "Licensed Maintenance Services",
+        "description": "Reliable commercial maintenance services to support your facility, covering drywall patching, interior touch-up painting, minor electrical fixes, and general building repairs.",
         "icon": "SanitizerIcon"
       },
       {
-        "title": "Restroom Sanitization",
-        "description": "Rigorous cleaning of high-touch areas to prevent cross-contamination in public and private clinics.",
-        "icon": "CheckCircleOutlineIcon"
+        "title": "Floor Restoration",
+        "description": "Extend the life and appearance of your facility's floors—specializing in striping, waxing, carpet cleaning, hard floor cleaning, and deep grout scrubbing.",
+        "icon": "CleaningServicesIcon"
+      },
+      {
+        "title": "Terminal Cleaning",
+        "description": "Specialized, protocol-driven terminal disinfection designed to sanitize every surface and medical fixture, ensuring operating suites remain pathogen-free, compliant, and inspection-ready.",
+        "icon": "BiotechIcon"
       }
     ],
     "callToAction": {
-        "title": "Ready for a cleaner, safer facility?",
-        "subtitle": "Our methods rely on strict training. Chrome should shine, and hard-to-reach areas are never an excuse for dust.",
-        "button": "Get a free quote"
+      "title": "Looking For A Cleaning Partner Instead Of Another Vendor?",
+      "subtitle": "We help surgery centers and healthcare organizations maintain clean, professional, and consistently managed facilities through customized service, proactive communication, and long-term accountability.",
+      "button": "Schedule Your Facility Assessment"
     }
   }
 }

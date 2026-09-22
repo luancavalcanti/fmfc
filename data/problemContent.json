@@ -1,0 +1,30 @@
+{
+  "problem": {
+    "preTitle": "Identify the problem",
+    "title": "Healthcare Leaders Shouldn't Have To Manage Their Cleaning Company",
+    "subtitle": "The right cleaning partner doesn't create more work—it eliminates it.",
+    "tiredOf": {
+      "title": "Tired of...",
+      "items": [
+        "Chasing down your cleaning company",
+        "Declining quality",
+        "Missed details",
+        "Poor communication",
+        "Constant turnover",
+        "Wondering if the facility is ready Monday morning"
+      ]
+    },
+    "expect": {
+      "title": "Expect...",
+      "items": [
+        "Consistent quality",
+        "Responsive communication",
+        "Healthcare-trained staff",
+        "Proactive quality checks",
+        "Reliable service",
+        "Peace of mind"
+      ]
+    },
+    "footerText": "Your cleaning company should make your job easier—not give you another vendor to manage."
+  }
+}

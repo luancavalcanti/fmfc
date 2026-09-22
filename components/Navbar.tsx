@@ -40,9 +40,9 @@ import logo2 from "@/assets/logo4.png";
 export default function Navbar() {
   const pathname = usePathname();
   const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 50 });
-  
+
   // Estados
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // Toggle do menu mobile
@@ -55,19 +55,29 @@ export default function Navbar() {
     if (pathname !== "/") return;
 
     const handleScroll = () => {
-      const sections = ["home", "services", "about"];
-      const scrollPosition = window.scrollY + 150; 
+      const sections = ["about", "process", "facilities", "services", "testimonials", "quote"];
+      const scrollPosition = window.scrollY + 150; // Compensação da altura da Navbar
+
+      let foundSection = "";
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const top = element.offsetTop;
+          // Usa getBoundingClientRect para ser imune a wrappers com position relative
+          const top = element.getBoundingClientRect().top + window.scrollY;
           const height = element.offsetHeight;
-          
+
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+            foundSection = section;
           }
         }
+      }
+
+      // Se não encontrou nenhuma seção (ex: está no Hero top), limpa
+      if (foundSection) {
+        setActiveSection(foundSection);
+      } else if (window.scrollY < 200) {
+        setActiveSection("");
       }
     };
 
@@ -84,10 +94,10 @@ export default function Navbar() {
 
     e.preventDefault();
     if (id === "home") {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setActiveSection("home");
-    return;
-  }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection("home");
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       const collapsedNavHeight = 60;
@@ -112,15 +122,21 @@ export default function Navbar() {
       </Box>
       <Divider sx={{ borderColor: "rgba(255,255,255,0.1)" }} />
       <List sx={{ pt: 2 }}>
-        {["home", "services", "about"].map((item) => {
-          const isActive = pathname === "/" && activeSection === item;
-          
+        {[
+          { id: "about", label: "About Us" },
+          { id: "process", label: "Our Process" },
+          { id: "facilities", label: "Facilities" },
+          { id: "services", label: "Services" },
+          { id: "testimonials", label: "Testimonials" },
+        ].map((item) => {
+          const isActive = pathname === "/" && activeSection === item.id;
+
           return (
             <ListItemButton
-              key={item}
+              key={item.id}
               component={Link}
-              href={`/#${item}`}
-              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item)}
+              href={`/#${item.id}`}
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item.id)}
               sx={{
                 py: 2,
                 color: isActive ? "secondary.main" : "white",
@@ -130,8 +146,8 @@ export default function Navbar() {
                 bgcolor: isActive ? "rgba(0, 85, 150, 0.05)" : "transparent",
               }}
             >
-              <ListItemText 
-                primary={item.charAt(0).toUpperCase() + item.slice(1)} 
+              <ListItemText
+                primary={item.label}
                 primaryTypographyProps={{ fontWeight: isActive ? 700 : 500 }}
               />
             </ListItemButton>
@@ -190,7 +206,7 @@ export default function Navbar() {
       >
         <Container maxWidth="lg">
           <Stack direction="row" justifyContent="space-between" alignItems="center">
-            
+
             {/* Lado Esquerdo - Contato Rápido */}
             <Stack direction="row" spacing={2}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -230,8 +246,8 @@ export default function Navbar() {
       {/* ======================================= */}
       <Container maxWidth="lg">
         {/* Ajustei o padding Y (py) para a transição ficar suave quando a HeadBar desaparecer */}
-        <Toolbar disableGutters sx={{ justifyContent: "space-between", height: trigger ? "60px" : "100px", transition: "all 0.3s ease" }}>
-          
+        <Toolbar disableGutters sx={{ justifyContent: "space-between", height: trigger ? "60px" : "80px", transition: "all 0.3s ease" }}>
+
           {/* LOGO AREA (Desktop & Mobile) */}
           <Box
             component={Link}
@@ -246,10 +262,10 @@ export default function Navbar() {
             <Image
               src={trigger ? logo : logo2}
               alt="FMFC Logo"
-              style={{ width: trigger ? 100 : 150, height: "auto", transition: "all 0.1s ease-in-out" }}
+              style={{ width: trigger ? 100 : 120, height: "auto", transition: "all 0.1s ease-in-out" }}
             />
-            <Divider orientation="vertical" flexItem sx={{ display:{ xs: "none", sm: "block" }, mx: 2, borderColor: trigger ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.5)" }} />
-            <Typography variant="body2" sx={{display:{ xs: "none", sm: "block" }, color: trigger ? "text.secondary" : "white", fontWeight: "100", letterSpacing: 1 }}>
+            <Divider orientation="vertical" flexItem sx={{ display: { xs: "none", sm: "block" }, mx: 2, borderColor: trigger ? "rgba(0,0,0,0.1)" : "rgba(255,255,255,0.5)" }} />
+            <Typography variant="body2" sx={{ display: { xs: "none", sm: "block" }, color: trigger ? "text.secondary" : "white", fontWeight: "100", letterSpacing: 1 }}>
               Florida Medical Facility Cleaning
             </Typography>
           </Box>
@@ -268,15 +284,21 @@ export default function Navbar() {
 
           {/* NAV LINKS (Apenas Desktop) */}
           <Stack direction="row" spacing={2} sx={{ display: { xs: "none", md: "flex" }, alignItems: "center" }}>
-            {["home", "services", "about"].map((item) => {
-              const isActive = pathname === "/" && activeSection === item;
+            {[
+              { id: "about", label: "About Us" },
+              { id: "process", label: "Our Process" },
+              { id: "facilities", label: "Facilities" },
+              { id: "services", label: "Services" },
+              { id: "testimonials", label: "Testimonials" },
+            ].map((item) => {
+              const isActive = pathname === "/" && activeSection === item.id;
 
               return (
                 <Button
-                  key={item}
+                  key={item.id}
                   component={Link}
-                  href={`/#${item}`}
-                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item)}
+                  href={`/#${item.id}`}
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, item.id)}
                   color="inherit"
                   sx={{
                     fontSize: "1rem",
@@ -297,7 +319,7 @@ export default function Navbar() {
                     "&:hover": { backgroundColor: "transparent", "&::after": { width: "70%" } },
                   }}
                 >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                  {item.label}
                 </Button>
               );
             })}
@@ -309,7 +331,7 @@ export default function Navbar() {
               onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "quote")}
               variant="contained"
               sx={{
-                bgcolor: "primary.main",
+                bgcolor: activeSection === "quote" ? "secondary.main" : "primary.main",
                 color: "white",
                 textTransform: "none",
                 fontWeight: "bold",
@@ -317,7 +339,8 @@ export default function Navbar() {
                 px: 4, // Aumentei um pouco a largura do botão
                 py: 1, // Dei um pouco mais de altura
                 ml: 2, // Margem esquerda extra para desgrudar do menu
-                "&:hover": { bgcolor: "primary.dark" },
+                transition: "background-color 0.3s ease",
+                "&:hover": { bgcolor: activeSection === "quote" ? "secondary.dark" : "primary.dark" },
               }}
             >
               Get a Free Quote
@@ -332,7 +355,7 @@ export default function Navbar() {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, 
+          keepMounted: true,
         }}
         sx={{
           display: { xs: "block", md: "none" },

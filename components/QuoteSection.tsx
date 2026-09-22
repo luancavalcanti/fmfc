@@ -38,11 +38,11 @@ export default function QuoteSection() {
   return (
     <Box id="quote" sx={{ bgcolor: "background.default" }}>
       {/* HEADER */}
-      <Banner 
+      <Banner
         title={quote.hero.title}
         subtitle={quote.hero.subtitle}
         img={hero.src}
-      
+
       />
 
       <Container maxWidth="lg" sx={{ py: 12 }}>
@@ -64,14 +64,14 @@ export default function QuoteSection() {
             </Typography>
             <Stack spacing={4}>
               {quote.orientation.reasons.map((reason, index) => (
-                <Box  key={index}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: "text.secondary" }}>
-                  {reason.title}
-                </Typography>
-                <Typography variant="body1" color="text.secondary">
-                  {reason.subtitle}
-                </Typography>
-              </Box>
+                <Box key={index}>
+                  <Typography variant="h6" sx={{ fontWeight: 700, color: "text.secondary" }}>
+                    {reason.title}
+                  </Typography>
+                  <Typography variant="body1" color="text.secondary">
+                    {reason.subtitle}
+                  </Typography>
+                </Box>
               ))}
               <Paper
                 elevation={1}
@@ -172,6 +172,7 @@ export default function QuoteSection() {
                     textTransform: "none",
                     color: "white",
                     bgcolor: "secondary.main",
+                    borderRadius: 16,
                   }}
                 >
                   {quote.form.submit}

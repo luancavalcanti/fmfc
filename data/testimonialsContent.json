@@ -1,0 +1,26 @@
+{
+  "reviews": {
+    "preTitle": "Testimonials",
+    "title": "Trusted by Healthcare Professionals",
+    "testimonials": [
+      {
+        "stars": 5,
+        "text": "The floors looked great and we are grateful that you helped us in looking our best for the survey. As always, we appreciate the attention that you pay us and look forward to a continued working relationship moving forward!",
+        "author": "Greg Bassen",
+        "position": "Clinical Director, Surg Center Of Palm Beach Gardens"
+      },
+      {
+        "stars": 5,
+        "text": "I just wanted to say thanks for having our floors still look great! We love them, they look fantastic!!",
+        "author": "Jill F. Lay",
+        "position": "Pre-Op Pacu Manager, North County Surgicenter"
+      },
+      {
+        "stars": 5,
+        "text": "At our surgery center, I oversee five operating rooms and two procedure rooms. During our AAA accreditation survey, we earned the best score I’ve received in my 37‑year career. The surveyors even complimented us on how clean the facility was.",
+        "author": "Laura Hofma",
+        "position": "Administrator / Records Custodian - SurgCenter of St. Lucie"
+      }
+    ]
+  }
+}

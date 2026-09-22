@@ -1,0 +1,28 @@
+{
+  "process": {
+    "preTitle": "Our Process",
+    "title": "How We Maintain Consistent Results",
+    "steps": [
+      {
+        "title": "Understand Your Cleaning Needs",
+        "description": "We start by learning about your facility, your challenges, and your specific requirements."
+      },
+      {
+        "title": "Customized Cleaning Plan",
+        "description": "We work based on a tailored approach to building targeted workflows and delivering daily consistency."
+      },
+      {
+        "title": "Train & Launch",
+        "description": "Our staff receives specialized training for your facility before starting our services."
+      },
+      {
+        "title": "Inspect & Improve",
+        "description": "We conduct regular proactive quality checks to ensure our high standards are always met."
+      },
+      {
+        "title": "Maintain Long-Term Excellence",
+        "description": "Enjoy peace of mind with a reliable cleaning partner that consistently delivers results."
+      }
+    ]
+  }
+}

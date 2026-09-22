@@ -1,0 +1,35 @@
+{
+  "facilities": {
+    "preTitle": "Who We Serve",
+    "title": "Healthcare Facilities We Support",
+    "subtitle": "",
+    "facilitiesList": [
+      {
+        "category": "Medical Units",
+        "items": [
+          "MRI Facilities",
+          "Plastic Surgeons",
+          "Specialist Practices"
+        ]
+      },
+      {
+        "category": "Surgery & Dialysis",
+        "items": [
+          "Hematology/Oncology Centers",
+          "Outpatient Surgery Centers",
+          "Concierge Practices",
+          "Dialysis Centers"
+        ]
+      },
+      {
+        "category": "Specialized Centers",
+        "items": [
+          "Orthopedic Surgeons",
+          "Diagnostic Facilities",
+          "Eye and Laser Centers",
+          "Dental Offices"
+        ]
+      }
+    ]
+  }
+}
