@@ -7,7 +7,7 @@ import OpacityIcon from "@mui/icons-material/Opacity";
 import { motion } from "framer-motion";
 import content from "@/data/whatWeCleanContent.json";
 
-const facilityIcons = {
+const facilityIcons: Record<string, React.ElementType> = {
   "Medical Units": LocalHospitalIcon,
   "Surgery & Dialysis": BusinessIcon,
   "Specialized Centers": OpacityIcon,
