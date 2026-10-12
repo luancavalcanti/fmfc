@@ -50,6 +50,17 @@ export default function HeroSection() {
   const { servicesList } = servicesContent.services;
   const { problem } = problemContent;
 
+  const handleScrollToQuote = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    const element = document.getElementById("quote");
+    if (element) {
+      const navHeight = 60;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    }
+  };
+
   const handleScrollToServices = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const element = document.getElementById("services");
@@ -215,7 +226,7 @@ export default function HeroSection() {
                 spacing={2}
                 sx={{ pt: 2 }}
               >
-                <PrimaryButton component={Link} href="/#quote">
+                <PrimaryButton href="#quote" onClick={handleScrollToQuote}>
                   {hero.button1}
                 </PrimaryButton>
 
