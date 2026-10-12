@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { Box, Typography, Container, Stack, Paper } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { motion, useScroll, useTransform } from "framer-motion";
 import content from "@/data/problemContent.json";
 import PreTitle from "@/components/ui/PreTitle";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -11,18 +12,80 @@ import Subtitle from "@/components/ui/Subtitle";
 export default function ProblemSection() {
   const { problem } = content;
 
+  // Referência para o Parallax com Framer Motion
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // Movimentação suave das bolhas no scroll
+  const bubble1Y = useTransform(scrollYProgress, [0, 1], ["-80px", "120px"]);
+  const bubble2Y = useTransform(scrollYProgress, [0, 1], ["60px", "-140px"]);
+  const bubble3Y = useTransform(scrollYProgress, [0, 1], ["-100px", "90px"]);
+
   return (
     <>
-      {/* --- 1.5. PROBLEM IDENTIFICATION SECTION --- */}
+      {/* --- PROBLEM IDENTIFICATION SECTION --- */}
       <Box
+        ref={ref}
         component="section"
-        sx={{ py: { xs: 8, md: 10 }, bgcolor: "white" }}
+        sx={{
+          py: { xs: 8, md: 10 },
+          bgcolor: "white",
+          position: "relative",
+          overflow: "hidden",
+        }}
       >
-        <Container maxWidth="lg">
+        {/* ELEMENTOS DECORATIVOS COM PARALLAX (Bolhas de fundo) */}
+        <Box
+          component={motion.div}
+          style={{ y: bubble1Y }}
+          sx={{
+            position: "absolute",
+            top: "5%",
+            left: -100,
+            width: 320,
+            height: 320,
+            borderRadius: "50%",
+            bgcolor: "rgba(51, 190, 202, 0.12)",
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+        <Box
+          component={motion.div}
+          style={{ y: bubble2Y }}
+          sx={{
+            position: "absolute",
+            top: "40%",
+            right: -120,
+            width: 380,
+            height: 380,
+            borderRadius: "50%",
+            bgcolor: "rgba(51, 190, 202, 0.08)",
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+        <Box
+          component={motion.div}
+          style={{ y: bubble3Y }}
+          sx={{
+            position: "absolute",
+            bottom: -60,
+            left: "20%",
+            width: 240,
+            height: 240,
+            borderRadius: "50%",
+            bgcolor: "rgba(246, 175, 133, 0.10)",
+            zIndex: 0,
+            pointerEvents: "none",
+          }}
+        />
+
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
           <Stack spacing={4} sx={{ textAlign: "flex-start", mb: 6 }}>
-            <PreTitle>
-              {problem.preTitle}
-            </PreTitle>
             <SectionTitle>
               {problem.title}
             </SectionTitle>

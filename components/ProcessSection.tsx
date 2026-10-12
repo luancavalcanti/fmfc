@@ -8,11 +8,11 @@ import content from "@/data/processContent.json";
 import PreTitle from "@/components/ui/PreTitle";
 import SectionTitle from "@/components/ui/SectionTitle";
 
-import step1Img from "@/assets/process/step_1.jpg";
-import step2Img from "@/assets/process/step_2.jpg";
-import step3Img from "@/assets/process/step_3.jpg";
-import step4Img from "@/assets/process/step_4.jpg";
-import step5Img from "@/assets/process/step_5.jpg";
+import step1Img from "@/assets/process/step_1.webp";
+import step2Img from "@/assets/process/step_2.webp";
+import step3Img from "@/assets/process/step_3.webp";
+import step4Img from "@/assets/process/step_4.webp";
+import step5Img from "@/assets/process/step_5.webp";
 
 const stepImages = [step1Img, step2Img, step3Img, step4Img, step5Img];
 

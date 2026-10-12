@@ -6,17 +6,51 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { motion, useScroll, useTransform } from "framer-motion";
 import content from "@/data/heroContent.json";
 import servicesContent from "@/data/servicesContent.json";
+import problemContent from "@/data/problemContent.json";
+import CancelIcon from "@mui/icons-material/Cancel";
+import PreTitle from "@/components/ui/PreTitle";
+import SectionTitle from "@/components/ui/SectionTitle";
+import { Paper } from "@mui/material";
 
 import heroBgHorizontal from "@/assets/hero_bg_horizontal3.jpg";
 import Title from "@/components/ui/Title";
 import Subtitle from "@/components/ui/Subtitle";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SecondaryButton from "@/components/ui/SecondaryButton";
+
+// Componente auxiliar local para padronizar os cartões de problemas e expectativas
+function SectionPaper({ children }: { children: React.ReactNode }) {
+  return (
+    <Paper
+      elevation={0}
+      sx={{
+        flex: 1,
+        p: { xs: 4, md: 5 },
+        borderRadius: "24px",
+        border: "1px solid rgba(255, 255, 255, 0.6)",
+        bgcolor: "rgba(255, 255, 255, 0)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)", // Suporte para Safari/iOS
+        boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.1)",
+        transition: "all 0.3s ease",
+        "&:hover": {
+          bgcolor: "rgba(255, 255, 255, 0.4)",
+          boxShadow: "0 12px 40px 0 rgba(31, 38, 135, 0.1)",
+          transform: "translateY(-4px)",
+        },
+      }}
+    >
+      {children}
+    </Paper>
+  );
+}
+
 export default function HeroSection() {
   const { hero } = content;
   const { servicesList } = servicesContent.services;
+  const { problem } = problemContent;
 
-  const handleScrollToServices = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleScrollToServices = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const element = document.getElementById("services");
     if (element) {
@@ -42,10 +76,12 @@ export default function HeroSection() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0px", "150px"]);
   // Imagem: Move para baixo um pouco menos que o texto
   const imageY = useTransform(scrollYProgress, [0, 1], ["0px", "80px"]);
-  // Bolhas: Movem-se em direções e velocidades diferentes
-  const bubble1Y = useTransform(scrollYProgress, [0, 1], ["0px", "-200px"]);
-  const bubble2Y = useTransform(scrollYProgress, [0, 1], ["0px", "250px"]);
-  const bubble3Y = useTransform(scrollYProgress, [0, 1], ["0px", "-150px"]);
+  // Bolhas distribuídas ao longo de todo o bloco unificado
+  const bubble1Y = useTransform(scrollYProgress, [0, 1], ["0px", "-260px"]);
+  const bubble2Y = useTransform(scrollYProgress, [0, 1], ["0px", "220px"]);
+  const bubble3Y = useTransform(scrollYProgress, [0, 1], ["0px", "-180px"]);
+  const bubble4Y = useTransform(scrollYProgress, [0, 1], ["-60px", "160px"]);
+  const bubble5Y = useTransform(scrollYProgress, [0, 1], ["60px", "-180px"]);
 
   return (
     <Box
@@ -55,27 +91,25 @@ export default function HeroSection() {
       sx={{
         position: "relative",
         pt: { xs: 15, md: 22 },
-        pb: { xs: 8, md: 12 },
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        backgroundColor: "default",
+        pb: { xs: 10, md: 14 },
+        backgroundColor: "#ffffff",
         overflow: "hidden",
       }}
     >
-      {/* ELEMENTOS DECORATIVOS COM PARALLAX */}
+      {/* ELEMENTOS DECORATIVOS COM PARALLAX UNIFICADOS */}
       <Box
         component={motion.div}
         style={{ y: bubble1Y }}
         sx={{
           position: "absolute",
-          top: -50,
-          left: -50,
-          width: 300,
-          height: 300,
+          top: -60,
+          left: -80,
+          width: 320,
+          height: 320,
           borderRadius: "50%",
-          bgcolor: "rgba(51, 190, 202, 0.15)",
+          bgcolor: "rgba(51, 190, 202, 0.14)",
           zIndex: 0,
+          pointerEvents: "none",
         }}
       />
       <Box
@@ -83,13 +117,14 @@ export default function HeroSection() {
         style={{ y: bubble2Y }}
         sx={{
           position: "absolute",
-          bottom: -150,
+          top: "20%",
           left: "35%",
-          width: 400,
-          height: 400,
+          width: 420,
+          height: 420,
           borderRadius: "50%",
           bgcolor: "rgba(51, 190, 202, 0.08)",
           zIndex: 0,
+          pointerEvents: "none",
         }}
       />
       <Box
@@ -97,17 +132,48 @@ export default function HeroSection() {
         style={{ y: bubble3Y }}
         sx={{
           position: "absolute",
-          top: "20%",
+          top: "10%",
           right: -80,
-          width: 250,
-          height: 250,
+          width: 280,
+          height: 280,
           borderRadius: "50%",
-          bgcolor: "rgba(51, 190, 202, 0.15)",
+          bgcolor: "rgba(51, 190, 202, 0.12)",
           zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+      <Box
+        component={motion.div}
+        style={{ y: bubble4Y }}
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: -90,
+          width: 360,
+          height: 360,
+          borderRadius: "50%",
+          bgcolor: "rgba(51, 190, 202, 0.10)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+      <Box
+        component={motion.div}
+        style={{ y: bubble5Y }}
+        sx={{
+          position: "absolute",
+          bottom: "8%",
+          right: -100,
+          width: 380,
+          height: 380,
+          borderRadius: "50%",
+          bgcolor: "rgba(246, 175, 133, 0.12)",
+          zIndex: 0,
+          pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2, mb: { xs: 12, md: 18 } }}>
         <Box
           sx={{
             display: "flex",
@@ -125,6 +191,9 @@ export default function HeroSection() {
             <Stack spacing={3}>
               <Title customColor="primary.dark">
                 {hero.subtitle}
+              </Title>
+              <Title customColor="secondary.light" sx={{ fontSize: { xs: '1.5rem', md: '2rem' } }}>
+                {hero.subtitle1}
               </Title>
               <Subtitle>
                 {hero.subtitle2}
@@ -201,6 +270,60 @@ export default function HeroSection() {
               }}
             />
           </Box>
+        </Box>
+      </Container>
+
+      {/* --- PARTE 2: PROBLEM IDENTIFICATION (Mesmo background contínuo) --- */}
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
+        <Stack spacing={4} sx={{ textAlign: "flex-start", mb: 6 }}>
+          <SectionTitle>
+            {problem.title}
+          </SectionTitle>
+          <Subtitle sx={{ maxWidth: "800px", mx: 0 }}>
+            {problem.subtitle}
+          </Subtitle>
+        </Stack>
+
+        <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, gap: 4 }}>
+          {/* Left Side: Tired of */}
+          <SectionPaper>
+            <Typography variant="h4" sx={{ fontWeight: 700, mb: 4, color: "#FAA0A0" }}>
+              {problem.tiredOf.title}
+            </Typography>
+            <Stack spacing={3}>
+              {problem.tiredOf.items.map((item, index) => (
+                <Box key={index} sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
+                  <CancelIcon sx={{ mt: 0.3, color: "#FAA0A0" }} />
+                  <Typography variant="h6" sx={{ color: "text.secondary", fontWeight: 500, fontSize: "1.1rem" }}>
+                    {item}
+                  </Typography>
+                </Box>
+              ))}
+            </Stack>
+          </SectionPaper>
+
+          {/* Right Side: What to expect */}
+          <SectionPaper>
+            <Typography variant="h4" sx={{ fontWeight: 700, mb: 4, color: "#89D289" }}>
+              {problem.expect.title}
+            </Typography>
+            <Stack spacing={3}>
+              {problem.expect.items.map((item, index) => (
+                <Box key={index} sx={{ display: "flex", alignItems: "flex-start", gap: 2 }}>
+                  <CheckCircleIcon sx={{ mt: 0.3, color: "#89D289" }} />
+                  <Typography variant="h6" sx={{ color: "text.secondary", fontWeight: 500, fontSize: "1.1rem" }}>
+                    {item}
+                  </Typography>
+                </Box>
+              ))}
+            </Stack>
+          </SectionPaper>
+        </Box>
+
+        <Box sx={{ mt: 8, textAlign: "flex-start" }}>
+          <Typography variant="h5" sx={{ fontWeight: 400, color: "primary.main" }}>
+            {problem.footerText}
+          </Typography>
         </Box>
       </Container>
     </Box>

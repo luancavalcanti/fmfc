@@ -156,10 +156,10 @@ export default function Navbar() {
       <Box sx={{ p: 3, mt: 2 }}>
         <Button
           component={Link}
-          href="/quote"
+          href="/#quote"
           variant="contained"
           fullWidth
-          onClick={() => setMobileOpen(false)}
+          onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleNavClick(e, "quote")}
           sx={{
             bgcolor: "secondary.main",
             color: "white",

@@ -21,14 +21,14 @@ import content from "@/data/servicesContent.json";
 import hero from "@/assets/services.webp";
 
 // Imagens Específicas dos Serviços
-import floorRestoration1 from "@/assets/services/floor_restoration_1.jpg";
-import floorRestoration2 from "@/assets/services/floor_restoration_2.jpg";
-import profCleaning1 from "@/assets/services/professional_cleaning1.jpg";
-import profCleaning2 from "@/assets/services/professional_cleaning2.jpg";
-import terminalCleaning1 from "@/assets/services/terminal_cleaning1.jpg";
-import terminalCleaning2 from "@/assets/services/terminal_cleaning2.jpg";
-import licensedMaintenance1 from "@/assets/services/licensed_maintenance_1.jpg";
-import licensedMaintenance2 from "@/assets/services/licensed_maintenance_2.jpg";
+import floorRestoration1 from "@/assets/services/floor_restoration_1.webp";
+import floorRestoration2 from "@/assets/services/floor_restoration_2.webp";
+import profCleaning1 from "@/assets/services/professional_cleaning1.webp";
+import profCleaning2 from "@/assets/services/professional_cleaning2.webp";
+import terminalCleaning1 from "@/assets/services/terminal_cleaning1.webp";
+import terminalCleaning2 from "@/assets/services/terminal_cleaning2.webp";
+import licensedMaintenance1 from "@/assets/services/licensed_maintenance_1.webp";
+import licensedMaintenance2 from "@/assets/services/licensed_maintenance_2.webp";
 
 // Mapeamento de Ícones
 const iconList: Record<string, React.ElementType> = {
@@ -162,28 +162,7 @@ export default function ServicesSection() {
 
                     {/* Grade de Miniaturas / Imagens Específicas */}
                     <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-                      {service.title === "Licensed Maintenance Services" ? (
-                        // RENDEREZA DOIS BACKGROUNDS COM DEGRADÊ LADO A LADO
-                        [1, 2].map((placeholder, i) => (
-                          <Box
-                            key={i}
-                            sx={{
-                              width: { xs: "100%", sm: "calc(50% - 8px)" },
-                              height: "160px",
-                              background: "linear-gradient(135deg, #33beca 0%, #f6af85 100%)",
-                              borderRadius: "12px",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              color: "white",
-                              fontWeight: "bold",
-                              opacity: 0.8,
-                            }}
-                          >
-                            Image {placeholder}
-                          </Box>
-                        ))
-                      ) : serviceImagesMap[service.title] ? (
+                      {serviceImagesMap[service.title] ? (
                         // SE EXISTIR IMAGEM PARA ESTE SERVIÇO NO MAPEAMENTO
                         serviceImagesMap[service.title].slice(0, 2).map((img, i) => (
                           <Box
